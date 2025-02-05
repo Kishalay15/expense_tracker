@@ -1,0 +1,32 @@
+{
+  "name": "expense",
+  "version": "1.0.0",
+  "description": "Backend for my React Expense Tracker",
+  "homepage": "https://github.com/Kishalay15/expense_tracker#readme",
+  "bugs": {
+    "url": "https://github.com/Kishalay15/expense_tracker/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kishalay15/expense_tracker.git"
+  },
+  "license": "ISC",
+  "author": "Kishalay Lahiri",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.7",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "nodemon": "^3.1.9"
+  }
+}
