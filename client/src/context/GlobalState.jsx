@@ -3,7 +3,7 @@ import AppReducer from './AppReducer'
 import axios from 'axios'
 
 const InitialState = {
-    transactions: [],
+    transactions:  [],
     error: null,
     loading: true
 }
@@ -15,24 +15,23 @@ export const GlobalProvider = ({ children }) => {
 
     async function getTransactions() {
         try {
-            const res = await axios.get('/api/v1/transactions') // You may need to update this path to use full URL depending on your deployment
+            const res = await axios.get('api/v1/transactions')
 
             dispatch({
                 type: 'GET_TRANSACTIONS',
                 payload: res.data.data
             })
         } catch (error) {
-            // Axios error structure is `error.response`, not `error.res`
             dispatch({
                 type: 'TRANSACTION_ERROR',
-                payload: error.response ? error.response.data.error : 'An unknown error occurred'
+                payload: error.res.data.error
             })
         }
     }
 
     async function deleteTransactions(id) {
         try {
-            await axios.delete(`/api/v1/transactions/${id}`)
+            await axios.delete(/api/v1/transactions/${id})
 
             dispatch({
                 type: 'DELETE_TRANSACTION',
@@ -41,7 +40,7 @@ export const GlobalProvider = ({ children }) => {
         } catch (error) {
             dispatch({
                 type: 'TRANSACTION_ERROR',
-                payload: error.response ? error.response.data.error : 'An unknown error occurred'
+                payload: error.res.data.error
             })
         }
     }
@@ -63,21 +62,19 @@ export const GlobalProvider = ({ children }) => {
         } catch (error) {
             dispatch({
                 type: 'TRANSACTION_ERROR',
-                payload: error.response ? error.response.data.error : 'An unknown error occurred'
+                payload: error.res.data.error
             })
         }
     }
 
-    return (
-        <GlobalContext.Provider value={{
-            transactions: state.transactions,
-            error: state.error,
-            loading: state.loading,
-            deleteTransactions,
-            addTransactions,
-            getTransactions
-        }}>
-            {children}
-        </GlobalContext.Provider>
-    )
+    return (<GlobalContext.Provider value={{
+        transactions: state.transactions,
+        error: state.error,
+        loading: state.loading,
+        deleteTransactions,
+        addTransactions,
+        getTransactions
+    }}>
+        {children}
+    </GlobalContext.Provider>)
 }
