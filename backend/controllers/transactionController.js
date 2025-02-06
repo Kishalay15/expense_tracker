@@ -42,7 +42,7 @@ exports.addTransaction = async (req, res, next) => {
                 success: false,
                 error: 'Server error'
             })
-        }        
+        }
     }
 }
 

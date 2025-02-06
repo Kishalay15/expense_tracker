@@ -1,7 +1,7 @@
 {
-  "name": "expense",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "Backend for my React Expense Tracker",
+  "description": "backend for expense_tracker",
   "homepage": "https://github.com/Kishalay15/expense_tracker#readme",
   "bugs": {
     "url": "https://github.com/Kishalay15/expense_tracker/issues"
@@ -24,7 +24,7 @@
     "colors": "^1.4.0",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mongoose": "^8.9.7",
+    "mongoose": "^8.10.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
