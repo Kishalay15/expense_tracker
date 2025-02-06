@@ -11,7 +11,7 @@ function AddTransaction() {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        
+
         const newTransaction = {
             id: nanoid(),
             text,
