@@ -21,19 +21,24 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use('/api/v1/transactions', transactions)
+const __dirname = path.resolve()
+app.use(express.static(path.join(__dirname, 'client/dist')))
 
-if (process.env.NODE_ENV === 'production') {
+app.get('*', (req, res) =>
+res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html')))
+
+// if (process.env.NODE_ENV === 'production') {
     // app.use(express.static('client/dist'))
 
     // app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html')))
 
-    const __dirname = path.resolve()
-    app.use(express.static(path.join(__dirname, 'client/dist')))
+    // const __dirname = path.resolve()
+    // app.use(express.static(path.join(__dirname, 'client/dist')))
 
-    app.get('*', (req, res) =>
-        res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
-    )
-}
+    // app.get('*', (req, res) =>
+    //     res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'))
+//     )
+// }
 
 
 app.listen(PORT, console.log(`Running`.blue.bold))
