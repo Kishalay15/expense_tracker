@@ -15,7 +15,7 @@ export const GlobalProvider = ({ children }) => {
 
     async function getTransactions() {
         try {
-            const res = await axios.get('api/v1/transactions')
+            const res = await axios.get('/api/v1/transactions')
 
             dispatch({
                 type: 'GET_TRANSACTIONS',
@@ -31,7 +31,7 @@ export const GlobalProvider = ({ children }) => {
 
     async function deleteTransactions(id) {
         try {
-            await axios.delete(/api/v1/transactions/${id})
+            await axios.delete('api/v1/transactions/${id}')
 
             dispatch({
                 type: 'DELETE_TRANSACTION',
