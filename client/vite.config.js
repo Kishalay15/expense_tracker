@@ -8,6 +8,7 @@ export default defineConfig({
     proxy:{
       '/api':{
         target: 'https://expense-tracker-backend-coyb.onrender.com',
+        // target: 'http://localhost:5000',
         changeOrigin: true,
       }
     }

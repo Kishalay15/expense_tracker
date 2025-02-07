@@ -31,7 +31,9 @@ export const GlobalProvider = ({ children }) => {
 
     async function deleteTransactions(id) {
         try {
-            const res = await axios.delete(`/api/v1/transactions/${id}`)
+            console.log('deleting with id: ', id)
+
+            await axios.delete(`/api/v1/transactions/${id}`)
             console.log('helooooooooooooooooooooooooo');
 
 
@@ -40,9 +42,11 @@ export const GlobalProvider = ({ children }) => {
                 payload: id
             })
         } catch (error) {
+            console.log(error)
+
             dispatch({
                 type: 'TRANSACTION_ERROR',
-                payload: error.response.data.error
+                payload: error.response ? error.response.data.error : 'Unknown error'
             })
         }
     }
